@@ -1,0 +1,68 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252">
+<meta name="generator" content="SQL*Plus 10.2.0">
+<style type='text/css'> body {font:10pt Arial,Helvetica,sans-serif; color:black; background:White;} p {font:10pt Arial,Helvetica,sans-serif; color:black; background:White;} table,tr,td {font:10pt Arial,Helvetica,sans-serif; color:Black; background:#f7f7e7; padding:0px 0px 0px 0px; margin:0px 0px 0px 0px;} th {font:bold 10pt Arial,Helvetica,sans-serif; color:#336699; background:#cccc99; padding:0px 0px 0px 0px;} h1 {font:16pt Arial,Helvetica,Geneva,sans-serif; color:#336699; background-color:White; border-bottom:1px solid #cccc99; margin-top:0pt; margin-bottom:0pt; padding:0px 0px 0px 0px;} h2 {font:bold 10pt Arial,Helvetica,Geneva,sans-serif; color:#336699; background-color:White; margin-top:4pt; margin-bottom:0pt;} a {font:9pt Arial,Helvetica,sans-serif; color:#663300; background:#ffffff; margin-top:0pt; margin-bottom:0pt; vertical-align:top;}</style><title>SQL*Plus Report</title>
+</head>
+<body>
+SQL&gt; UPDATE t_reservation
+<br>
+  2  SET buy_method = INITCAP('&amp;Moyen_de_paiement'),
+<br>
+  3     price = (SELECT SUM((tt.price)+
+<br>
+  4                             ((tt.price*NVL(w.class_pct, 0))/100)-
+<br>
+  5                             (((tt.price+((tt.price*NVL(w.class_pct, 0))/100))*NVL(CASE
+<br>
+  6            WHEN TO_CHAR(tt.departure_time, 'D') BETWEEN 1 AND 5 THEN discount_pct
+<br>
+  7            WHEN TO_CHAR(tt.departure_time, 'D') BETWEEN 6 AND 7 THEN discount_we_pct
+<br>
+  8            END, 0))/100))
+<br>
+  9                     FROM t_reservation r
+<br>
+ 10                     JOIN t_ticket t ON r.reservation_id = t.reservation_id
+<br>
+ 11                     JOIN t_customer c ON t.customer_id = c.customer_id
+<br>
+ 12                     FULL OUTER JOIN t_pass p ON c.pass_id = p.pass_id
+<br>
+ 13                     JOIN t_wagon_train wt ON t.wag_tr_id = wt.wag_tr_id
+<br>
+ 14                     JOIN t_train tt ON wt.train_id = tt.train_id
+<br>
+ 15                     JOIN t_wagon w ON wt.wagon_id = w.wagon_id
+<br>
+ 16              WHERE r.reservation_id = &amp;&amp;num_de_reservation
+<br>
+ 17                     GROUP BY r.reservation_id)
+<br>
+ 18  WHERE reservation_id = &amp;Numero_de_reservation ;
+<br>
+Entrez une valeur pour moyen_de_paiement : Credit Card
+<br>
+ancien   2 : SET buy_method = INITCAP('&amp;Moyen_de_paiement'),
+<br>
+nouveau   2 : SET buy_method = INITCAP('Credit Card'),
+<br>
+ancien  16 :             WHERE r.reservation_id = &amp;&amp;num_de_reservation
+<br>
+nouveau  16 :             WHERE r.reservation_id = 1
+<br>
+Entrez une valeur pour numero_de_reservation : 2
+<br>
+ancien  18 : WHERE reservation_id = &amp;Numero_de_reservation 
+<br>
+nouveau  18 : WHERE reservation_id = 2 
+<br>
+
+1 ligne mise à jour.<br>
+<br>
+
+
+SQL&gt; SPOOL OFF;
+<br>
+</body>
+</html>

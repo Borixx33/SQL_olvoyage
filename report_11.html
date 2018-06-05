@@ -1,0 +1,314 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252">
+<meta name="generator" content="SQL*Plus 10.2.0">
+<style type='text/css'> body {font:10pt Arial,Helvetica,sans-serif; color:black; background:White;} p {font:10pt Arial,Helvetica,sans-serif; color:black; background:White;} table,tr,td {font:10pt Arial,Helvetica,sans-serif; color:Black; background:#f7f7e7; padding:0px 0px 0px 0px; margin:0px 0px 0px 0px;} th {font:bold 10pt Arial,Helvetica,sans-serif; color:#336699; background:#cccc99; padding:0px 0px 0px 0px;} h1 {font:16pt Arial,Helvetica,Geneva,sans-serif; color:#336699; background-color:White; border-bottom:1px solid #cccc99; margin-top:0pt; margin-bottom:0pt; padding:0px 0px 0px 0px;} h2 {font:bold 10pt Arial,Helvetica,Geneva,sans-serif; color:#336699; background-color:White; margin-top:4pt; margin-bottom:0pt;} a {font:9pt Arial,Helvetica,sans-serif; color:#663300; background:#ffffff; margin-top:0pt; margin-bottom:0pt; vertical-align:top;}</style><title>SQL*Plus Report</title>
+</head>
+<body>
+SQL&gt; SELECT t.train_id||' '||s1.city||' - '||s2.city &quot;Nom Train et trajet&quot;, p.pass_name &quot;Type Abonnement&quot;, t.price-((t.price*p.discount_pct)/100) &quot;Tarif Semaine&quot;, t.price-((t.price*p.discount_we_pct)/100) &quot;Tarif Week-end&quot;
+<br>
+  2  FROM t_train t
+<br>
+  3  CROSS JOIN t_pass p
+<br>
+  4  JOIN t_station s1 ON t.departure_station_id = s1.station_id
+<br>
+  5  JOIN t_station s2 ON t.arrival_station_id = s2.station_id
+<br>
+  6  WHERE s1.city = 'Paris'
+<br>
+  7  ORDER BY t.train_id ;
+<br>
+<p>
+<table border='1' width='90%' align='center' summary='Script output'>
+<tr>
+<th scope="col">
+Nom Train et trajet
+</th>
+<th scope="col">
+Type Abonnement
+</th>
+<th scope="col">
+Tarif Semaine
+</th>
+<th scope="col">
+Tarif Week-end
+</th>
+</tr>
+<tr>
+<td>
+1 Paris - Bordeaux
+</td>
+<td>
+15-25
+</td>
+<td align="right">
+     60,25
+</td>
+<td align="right">
+    90,375
+</td>
+</tr>
+<tr>
+<td>
+1 Paris - Bordeaux
+</td>
+<td>
+Senior
+</td>
+<td align="right">
+      72,3
+</td>
+<td align="right">
+      96,4
+</td>
+</tr>
+<tr>
+<td>
+1 Paris - Bordeaux
+</td>
+<td>
+Pro
+</td>
+<td align="right">
+     84,35
+</td>
+<td align="right">
+   102,425
+</td>
+</tr>
+<tr>
+<td>
+3 Paris - Marseille
+</td>
+<td>
+15-25
+</td>
+<td align="right">
+        77
+</td>
+<td align="right">
+     115,5
+</td>
+</tr>
+<tr>
+<td>
+3 Paris - Marseille
+</td>
+<td>
+Senior
+</td>
+<td align="right">
+      92,4
+</td>
+<td align="right">
+     123,2
+</td>
+</tr>
+<tr>
+<td>
+3 Paris - Marseille
+</td>
+<td>
+Pro
+</td>
+<td align="right">
+     107,8
+</td>
+<td align="right">
+     130,9
+</td>
+</tr>
+<tr>
+<td>
+12 Paris - Nice
+</td>
+<td>
+15-25
+</td>
+<td align="right">
+    84,375
+</td>
+<td align="right">
+  126,5625
+</td>
+</tr>
+<tr>
+<td>
+12 Paris - Nice
+</td>
+<td>
+Senior
+</td>
+<td align="right">
+    101,25
+</td>
+<td align="right">
+       135
+</td>
+</tr>
+<tr>
+<td>
+12 Paris - Nice
+</td>
+<td>
+Pro
+</td>
+<td align="right">
+   118,125
+</td>
+<td align="right">
+  143,4375
+</td>
+</tr>
+<tr>
+<td>
+26 Paris - Saint-Malo
+</td>
+<td>
+15-25
+</td>
+<td align="right">
+     43,75
+</td>
+<td align="right">
+    65,625
+</td>
+</tr>
+<tr>
+<td>
+26 Paris - Saint-Malo
+</td>
+<td>
+Senior
+</td>
+<td align="right">
+      52,5
+</td>
+<td align="right">
+        70
+</td>
+</tr>
+<tr>
+<td>
+26 Paris - Saint-Malo
+</td>
+<td>
+Pro
+</td>
+<td align="right">
+     61,25
+</td>
+<td align="right">
+    74,375
+</td>
+</tr>
+<tr>
+<td>
+36 Paris - Calais
+</td>
+<td>
+15-25
+</td>
+<td align="right">
+     36,25
+</td>
+<td align="right">
+    54,375
+</td>
+</tr>
+<tr>
+<td>
+36 Paris - Calais
+</td>
+<td>
+Senior
+</td>
+<td align="right">
+      43,5
+</td>
+<td align="right">
+        58
+</td>
+</tr>
+<tr>
+<th scope="col">
+Nom Train et trajet
+</th>
+<th scope="col">
+Type Abonnement
+</th>
+<th scope="col">
+Tarif Semaine
+</th>
+<th scope="col">
+Tarif Week-end
+</th>
+</tr>
+<tr>
+<td>
+36 Paris - Calais
+</td>
+<td>
+Pro
+</td>
+<td align="right">
+     50,75
+</td>
+<td align="right">
+    61,625
+</td>
+</tr>
+<tr>
+<td>
+42 Paris - Le Havre
+</td>
+<td>
+15-25
+</td>
+<td align="right">
+    20,625
+</td>
+<td align="right">
+   30,9375
+</td>
+</tr>
+<tr>
+<td>
+42 Paris - Le Havre
+</td>
+<td>
+Senior
+</td>
+<td align="right">
+     24,75
+</td>
+<td align="right">
+        33
+</td>
+</tr>
+<tr>
+<td>
+42 Paris - Le Havre
+</td>
+<td>
+Pro
+</td>
+<td align="right">
+    28,875
+</td>
+<td align="right">
+   35,0625
+</td>
+</tr>
+</table>
+<p>
+
+18 ligne(s) sélectionnée(s).<br>
+<br>
+
+
+SQL&gt; SPOOL OFF;
+<br>
+</body>
+</html>
