@@ -1,0 +1,664 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252">
+<meta name="generator" content="SQL*Plus 10.2.0">
+<style type='text/css'> body {font:10pt Arial,Helvetica,sans-serif; color:black; background:White;} p {font:10pt Arial,Helvetica,sans-serif; color:black; background:White;} table,tr,td {font:10pt Arial,Helvetica,sans-serif; color:Black; background:#f7f7e7; padding:0px 0px 0px 0px; margin:0px 0px 0px 0px;} th {font:bold 10pt Arial,Helvetica,sans-serif; color:#336699; background:#cccc99; padding:0px 0px 0px 0px;} h1 {font:16pt Arial,Helvetica,Geneva,sans-serif; color:#336699; background-color:White; border-bottom:1px solid #cccc99; margin-top:0pt; margin-bottom:0pt; padding:0px 0px 0px 0px;} h2 {font:bold 10pt Arial,Helvetica,Geneva,sans-serif; color:#336699; background-color:White; margin-top:4pt; margin-bottom:0pt;} a {font:9pt Arial,Helvetica,sans-serif; color:#663300; background:#ffffff; margin-top:0pt; margin-bottom:0pt; vertical-align:top;}</style><title>SQL*Plus Report</title>
+</head>
+<body>
+SQL&gt; SELECT t.train_id &quot; Train &quot;, d.city || TO_CHAR(t.departure_time, ' (DD/MM/YY HH24:MI) ') ||' – '|| a.city || TO_CHAR(t.arrival_time, ' (DD/MM/YY HH24:MI) ') &quot; Trajet &quot;, t.distance &quot; Distance&quot;, t.price ||' €' &quot; Prix initial &quot;
+<br>
+  2  FROM t_train t
+<br>
+  3  JOIN t_station d
+<br>
+  4  ON t.departure_station_id = d.station_id
+<br>
+  5  JOIN t_station a
+<br>
+  6  ON t.arrival_station_id = a.station_id
+<br>
+  7  ORDER BY t.train_id ;
+<br>
+<p>
+<table border='1' width='90%' align='center' summary='Script output'>
+<tr>
+<th scope="col">
+ Train 
+</th>
+<th scope="col">
+ Trajet 
+</th>
+<th scope="col">
+ Distance
+</th>
+<th scope="col">
+ Prix initial 
+</th>
+</tr>
+<tr>
+<td align="right">
+         1
+</td>
+<td>
+Paris (21/01/18 09:00)  – Bordeaux (21/01/18 12:00) 
+</td>
+<td align="right">
+       482
+</td>
+<td>
+120,5 €
+</td>
+</tr>
+<tr>
+<td align="right">
+         2
+</td>
+<td>
+Bordeaux (21/01/18 14:30)  – Paris (21/01/18 17:30) 
+</td>
+<td align="right">
+       482
+</td>
+<td>
+120,5 €
+</td>
+</tr>
+<tr>
+<td align="right">
+         3
+</td>
+<td>
+Paris (22/01/18 12:00)  – Marseille (22/01/18 15:15) 
+</td>
+<td align="right">
+       616
+</td>
+<td>
+154 €
+</td>
+</tr>
+<tr>
+<td align="right">
+         4
+</td>
+<td>
+Marseille (22/01/18 18:00)  – Paris (22/01/18 21:15) 
+</td>
+<td align="right">
+       616
+</td>
+<td>
+154 €
+</td>
+</tr>
+<tr>
+<td align="right">
+         5
+</td>
+<td>
+Marseille (21/01/18 07:15)  – Nantes (21/01/18 11:00) 
+</td>
+<td align="right">
+       662
+</td>
+<td>
+165,5 €
+</td>
+</tr>
+<tr>
+<td align="right">
+         6
+</td>
+<td>
+Nantes (21/01/18 18:15)  – Marseille (21/01/18 22:00) 
+</td>
+<td align="right">
+       662
+</td>
+<td>
+165,5 €
+</td>
+</tr>
+<tr>
+<td align="right">
+         7
+</td>
+<td>
+Lyon (22/01/18 09:00)  – Toulouse (22/01/18 11:00) 
+</td>
+<td align="right">
+       380
+</td>
+<td>
+95 €
+</td>
+</tr>
+<tr>
+<td align="right">
+         8
+</td>
+<td>
+Toulouse (22/01/18 17:00)  – Lyon (22/01/18 19:00) 
+</td>
+<td align="right">
+       380
+</td>
+<td>
+95 €
+</td>
+</tr>
+<tr>
+<td align="right">
+         9
+</td>
+<td>
+Nantes (23/01/18 11:00)  – Lyon (23/01/18 12:30) 
+</td>
+<td align="right">
+       252
+</td>
+<td>
+63 €
+</td>
+</tr>
+<tr>
+<td align="right">
+        10
+</td>
+<td>
+Lyon (24/01/18 09:30)  – Nantes (24/01/18 11:30) 
+</td>
+<td align="right">
+       252
+</td>
+<td>
+63 €
+</td>
+</tr>
+<tr>
+<td align="right">
+        11
+</td>
+<td>
+Nice (24/01/18 08:00)  – Paris (24/01/18 11:35) 
+</td>
+<td align="right">
+       675
+</td>
+<td>
+168,75 €
+</td>
+</tr>
+<tr>
+<td align="right">
+        12
+</td>
+<td>
+Paris (24/01/18 16:30)  – Nice (24/01/18 20:05) 
+</td>
+<td align="right">
+       675
+</td>
+<td>
+168,75 €
+</td>
+</tr>
+<tr>
+<td align="right">
+        13
+</td>
+<td>
+Marseille (23/01/18 07:40)  – Nimes (23/01/18 08:10) 
+</td>
+<td align="right">
+        77
+</td>
+<td>
+19,25 €
+</td>
+</tr>
+<tr>
+<td align="right">
+        14
+</td>
+<td>
+Nimes (24/01/18 19:30)  – Marseille (24/01/18 20:00) 
+</td>
+<td align="right">
+        77
+</td>
+<td>
+19,25 €
+</td>
+</tr>
+<tr>
+<th scope="col">
+ Train 
+</th>
+<th scope="col">
+ Trajet 
+</th>
+<th scope="col">
+ Distance
+</th>
+<th scope="col">
+ Prix initial 
+</th>
+</tr>
+<tr>
+<td align="right">
+        15
+</td>
+<td>
+Strasbourg (24/01/18 11:40)  – Brest (24/01/18 16:10) 
+</td>
+<td align="right">
+       858
+</td>
+<td>
+214,5 €
+</td>
+</tr>
+<tr>
+<td align="right">
+        16
+</td>
+<td>
+Brest (24/01/18 16:20)  – Strasbourg (24/01/18 20:20) 
+</td>
+<td align="right">
+       858
+</td>
+<td>
+214,5 €
+</td>
+</tr>
+<tr>
+<td align="right">
+        17
+</td>
+<td>
+Brest (25/01/18 07:00)  – Bordeaux (25/01/18 09:30) 
+</td>
+<td align="right">
+       511
+</td>
+<td>
+127,75 €
+</td>
+</tr>
+<tr>
+<td align="right">
+        18
+</td>
+<td>
+Bordeaux (25/01/18 18:30)  – Brest (25/01/18 21:00) 
+</td>
+<td align="right">
+       511
+</td>
+<td>
+127,75 €
+</td>
+</tr>
+<tr>
+<td align="right">
+        19
+</td>
+<td>
+Macon (24/01/18 10:00)  – Bordeaux (24/01/18 12:10) 
+</td>
+<td align="right">
+       425
+</td>
+<td>
+106,25 €
+</td>
+</tr>
+<tr>
+<td align="right">
+        20
+</td>
+<td>
+Bordeaux (24/01/18 15:00)  – Macon (24/01/18 17:10) 
+</td>
+<td align="right">
+       425
+</td>
+<td>
+106,25 €
+</td>
+</tr>
+<tr>
+<td align="right">
+        21
+</td>
+<td>
+Toulouse (25/01/18 12:30)  – Clermont-Ferrand (25/01/18 14:00) 
+</td>
+<td align="right">
+       275
+</td>
+<td>
+68,75 €
+</td>
+</tr>
+<tr>
+<td align="right">
+        22
+</td>
+<td>
+Clermont-Ferrand (25/01/18 16:30)  – Toulouse (25/01/18 18:00) 
+</td>
+<td align="right">
+       275
+</td>
+<td>
+68,75 €
+</td>
+</tr>
+<tr>
+<td align="right">
+        23
+</td>
+<td>
+Saint-Malo (14/01/18 09:00)  – Nimes (14/01/18 13:00) 
+</td>
+<td align="right">
+       800
+</td>
+<td>
+200 €
+</td>
+</tr>
+<tr>
+<td align="right">
+        24
+</td>
+<td>
+Nimes (14/01/18 16:00)  – Saint-Malo (14/01/18 20:00) 
+</td>
+<td align="right">
+       800
+</td>
+<td>
+200 €
+</td>
+</tr>
+<tr>
+<td align="right">
+        25
+</td>
+<td>
+Saint-Malo (16/01/18 10:00)  – Paris (16/01/18 12:00) 
+</td>
+<td align="right">
+       350
+</td>
+<td>
+87,5 €
+</td>
+</tr>
+<tr>
+<td align="right">
+        26
+</td>
+<td>
+Paris (16/01/18 15:30)  – Saint-Malo (16/01/18 17:30) 
+</td>
+<td align="right">
+       350
+</td>
+<td>
+87,5 €
+</td>
+</tr>
+<tr>
+<td align="right">
+        27
+</td>
+<td>
+Montpellier (18/01/18 09:30)  – Nice (18/01/18 11:10) 
+</td>
+<td align="right">
+       285
+</td>
+<td>
+71,25 €
+</td>
+</tr>
+<tr>
+<td align="right">
+        28
+</td>
+<td>
+Nice (18/01/18 19:00)  – Montpellier (18/01/18 20:40) 
+</td>
+<td align="right">
+       285
+</td>
+<td>
+71,25 €
+</td>
+</tr>
+<tr>
+<th scope="col">
+ Train 
+</th>
+<th scope="col">
+ Trajet 
+</th>
+<th scope="col">
+ Distance
+</th>
+<th scope="col">
+ Prix initial 
+</th>
+</tr>
+<tr>
+<td align="right">
+        29
+</td>
+<td>
+Mulhouse (20/01/18 10:00)  – Brest (20/01/18 14:30) 
+</td>
+<td align="right">
+       900
+</td>
+<td>
+225 €
+</td>
+</tr>
+<tr>
+<td align="right">
+        30
+</td>
+<td>
+Brest (20/01/18 15:00)  – Mulhouse (20/01/18 19:30) 
+</td>
+<td align="right">
+       900
+</td>
+<td>
+225 €
+</td>
+</tr>
+<tr>
+<td align="right">
+        31
+</td>
+<td>
+Troyes (22/01/18 12:00)  – Lyon (22/01/18 14:00) 
+</td>
+<td align="right">
+       316
+</td>
+<td>
+79 €
+</td>
+</tr>
+<tr>
+<td align="right">
+        32
+</td>
+<td>
+Lyon (22/01/18 16:00)  – Troyes (22/01/18 18:00) 
+</td>
+<td align="right">
+       316
+</td>
+<td>
+79 €
+</td>
+</tr>
+<tr>
+<td align="right">
+        33
+</td>
+<td>
+Valenciennes (24/01/18 11:10)  – Strasbourg (24/01/18 13:50) 
+</td>
+<td align="right">
+       486
+</td>
+<td>
+121,5 €
+</td>
+</tr>
+<tr>
+<td align="right">
+        34
+</td>
+<td>
+Strasbourg (24/01/18 17:00)  – Valenciennes (24/01/18 19:40) 
+</td>
+<td align="right">
+       486
+</td>
+<td>
+121,5 €
+</td>
+</tr>
+<tr>
+<td align="right">
+        35
+</td>
+<td>
+Calais (26/01/18 11:00)  – Paris (26/01/18 12:45) 
+</td>
+<td align="right">
+       290
+</td>
+<td>
+72,5 €
+</td>
+</tr>
+<tr>
+<td align="right">
+        36
+</td>
+<td>
+Paris (27/01/18 13:00)  – Calais (27/01/18 14:45) 
+</td>
+<td align="right">
+       290
+</td>
+<td>
+72,5 €
+</td>
+</tr>
+<tr>
+<td align="right">
+        37
+</td>
+<td>
+Dijon (28/01/18 09:00)  – Valenciennes (28/01/18 11:35) 
+</td>
+<td align="right">
+       471
+</td>
+<td>
+117,75 €
+</td>
+</tr>
+<tr>
+<td align="right">
+        38
+</td>
+<td>
+Valenciennes (28/01/18 14:00)  – Dijon (28/01/18 16:35) 
+</td>
+<td align="right">
+       471
+</td>
+<td>
+117,75 €
+</td>
+</tr>
+<tr>
+<td align="right">
+        39
+</td>
+<td>
+Grenoble (30/01/18 08:30)  – Macon (30/01/18 09:10) 
+</td>
+<td align="right">
+       120
+</td>
+<td>
+30 €
+</td>
+</tr>
+<tr>
+<td align="right">
+        40
+</td>
+<td>
+Macon (30/01/18 10:10)  – Grenoble (30/01/18 10:50) 
+</td>
+<td align="right">
+       120
+</td>
+<td>
+30 €
+</td>
+</tr>
+<tr>
+<td align="right">
+        41
+</td>
+<td>
+Le Havre (01/02/18 12:10)  – Paris (01/02/18 13:00) 
+</td>
+<td align="right">
+       165
+</td>
+<td>
+41,25 €
+</td>
+</tr>
+<tr>
+<td align="right">
+        42
+</td>
+<td>
+Paris (02/02/18 19:10)  – Le Havre (02/02/18 20:00) 
+</td>
+<td align="right">
+       165
+</td>
+<td>
+41,25 €
+</td>
+</tr>
+</table>
+<p>
+
+42 ligne(s) sélectionnée(s).<br>
+<br>
+
+
+SQL&gt; SPOOL OFF;
+<br>
+</body>
+</html>

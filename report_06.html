@@ -1,0 +1,88 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252">
+<meta name="generator" content="SQL*Plus 10.2.0">
+<style type='text/css'> body {font:10pt Arial,Helvetica,sans-serif; color:black; background:White;} p {font:10pt Arial,Helvetica,sans-serif; color:black; background:White;} table,tr,td {font:10pt Arial,Helvetica,sans-serif; color:Black; background:#f7f7e7; padding:0px 0px 0px 0px; margin:0px 0px 0px 0px;} th {font:bold 10pt Arial,Helvetica,sans-serif; color:#336699; background:#cccc99; padding:0px 0px 0px 0px;} h1 {font:16pt Arial,Helvetica,Geneva,sans-serif; color:#336699; background-color:White; border-bottom:1px solid #cccc99; margin-top:0pt; margin-bottom:0pt; padding:0px 0px 0px 0px;} h2 {font:bold 10pt Arial,Helvetica,Geneva,sans-serif; color:#336699; background-color:White; margin-top:4pt; margin-bottom:0pt;} a {font:9pt Arial,Helvetica,sans-serif; color:#663300; background:#ffffff; margin-top:0pt; margin-bottom:0pt; vertical-align:top;}</style><title>SQL*Plus Report</title>
+</head>
+<body>
+SQL&gt; SELECT emp.nbemp &quot; Nb d’employés &quot;, cus.nbcus &quot; Nb d’acheteurs&quot;, cus.abo &quot; % d’abonnés &quot;, res.nbres &quot; Nb de réservations &quot;, tic.nbtic &quot; Nb de tickets &quot;, tr.nbtr &quot; Nb de trains &quot;, sta.nbsta &quot; Nb de stations &quot;
+<br>
+  2  FROM (SELECT COUNT(e.employee_id) nbemp
+<br>
+  3   FROM t_employee e) emp,
+<br>
+  4  (SELECT COUNT(c.customer_id) nbcus, ROUND((COUNT(c.pass_id)/COUNT(c.customer_id)*100), 2) || '%' abo
+<br>
+  5   FROM t_customer c) cus,
+<br>
+  6  (SELECT COUNT(r.reservation_id) nbres
+<br>
+  7   FROM t_reservation r) res,
+<br>
+  8  (SELECT COUNT(ti.ticket_id ) nbtic
+<br>
+  9   FROM t_ticket ti ) tic,
+<br>
+ 10  (SELECT COUNT(t.train_id) nbtr
+<br>
+ 11   FROM t_train t) tr,
+<br>
+ 12  (SELECT COUNT(s.station_id) nbsta
+<br>
+ 13   FROM t_station s) sta ;
+<br>
+<p>
+<table border='1' width='90%' align='center' summary='Script output'>
+<tr>
+<th scope="col">
+ Nb d’employés 
+</th>
+<th scope="col">
+ Nb d’acheteurs
+</th>
+<th scope="col">
+ % d’abonnés 
+</th>
+<th scope="col">
+ Nb de réservations 
+</th>
+<th scope="col">
+ Nb de tickets 
+</th>
+<th scope="col">
+ Nb de trains 
+</th>
+<th scope="col">
+ Nb de stations 
+</th>
+</tr>
+<tr>
+<td align="right">
+        14
+</td>
+<td align="right">
+        81
+</td>
+<td>
+43,21%
+</td>
+<td align="right">
+        41
+</td>
+<td align="right">
+        71
+</td>
+<td align="right">
+        42
+</td>
+<td align="right">
+        21
+</td>
+</tr>
+</table>
+<p>
+
+SQL&gt; SPOOL OFF;
+<br>
+</body>
+</html>
