@@ -1,0 +1,92 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252">
+<meta name="generator" content="SQL*Plus 10.2.0">
+<style type='text/css'> body {font:10pt Arial,Helvetica,sans-serif; color:black; background:White;} p {font:10pt Arial,Helvetica,sans-serif; color:black; background:White;} table,tr,td {font:10pt Arial,Helvetica,sans-serif; color:Black; background:#f7f7e7; padding:0px 0px 0px 0px; margin:0px 0px 0px 0px;} th {font:bold 10pt Arial,Helvetica,sans-serif; color:#336699; background:#cccc99; padding:0px 0px 0px 0px;} h1 {font:16pt Arial,Helvetica,Geneva,sans-serif; color:#336699; background-color:White; border-bottom:1px solid #cccc99; margin-top:0pt; margin-bottom:0pt; padding:0px 0px 0px 0px;} h2 {font:bold 10pt Arial,Helvetica,Geneva,sans-serif; color:#336699; background-color:White; margin-top:4pt; margin-bottom:0pt;} a {font:9pt Arial,Helvetica,sans-serif; color:#663300; background:#ffffff; margin-top:0pt; margin-bottom:0pt; vertical-align:top;}</style><title>SQL*Plus Report</title>
+</head>
+<body>
+SQL&gt; SELECT tt.train_id||' '||s1.city||' - '||s2.city &quot;Nom Train&quot;,
+<br>
+  2   SUM(nb_seat)-COUNT(t.ticket_id) &quot;Nombre de places libres&quot;
+<br>
+  3  FROM t_train tt
+<br>
+  4  JOIN t_wagon_train wt ON tt.train_id = wt.train_id
+<br>
+  5  JOIN t_wagon w ON w.wagon_id = wt.wagon_id
+<br>
+  6  JOIN t_station s1 ON tt.departure_station_id = s1.station_id
+<br>
+  7  JOIN t_station s2 ON tt.arrival_station_id = s2.station_id
+<br>
+  8  JOIN t_ticket t ON t.wag_tr_id = wt.wag_tr_id
+<br>
+  9  JOIN t_reservation r ON t.reservation_id = r.reservation_id
+<br>
+ 10  WHERE tt.distance &gt; 300
+<br>
+ 11  AND tt.departure_time LIKE '22/01/18'
+<br>
+ 12  GROUP BY tt.train_id||' '||s1.city||' - '||s2.city
+<br>
+ 13  HAVING COUNT(t.ticket_id) &gt; 0
+<br>
+ 14  ORDER BY tt.train_id||' '||s1.city||' - '||s2.city ;
+<br>
+<p>
+<table border='1' width='90%' align='center' summary='Script output'>
+<tr>
+<th scope="col">
+Nom Train
+</th>
+<th scope="col">
+Nombre de places libres
+</th>
+</tr>
+<tr>
+<td>
+3 Paris - Marseille
+</td>
+<td align="right">
+       162
+</td>
+</tr>
+<tr>
+<td>
+31 Troyes - Lyon
+</td>
+<td align="right">
+        19
+</td>
+</tr>
+<tr>
+<td>
+4 Marseille - Paris
+</td>
+<td align="right">
+        86
+</td>
+</tr>
+<tr>
+<td>
+7 Lyon - Toulouse
+</td>
+<td align="right">
+        29
+</td>
+</tr>
+<tr>
+<td>
+8 Toulouse - Lyon
+</td>
+<td align="right">
+        19
+</td>
+</tr>
+</table>
+<p>
+
+SQL&gt; SPOOL OFF;
+<br>
+</body>
+</html>

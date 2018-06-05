@@ -1,0 +1,150 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252">
+<meta name="generator" content="SQL*Plus 10.2.0">
+<style type='text/css'> body {font:10pt Arial,Helvetica,sans-serif; color:black; background:White;} p {font:10pt Arial,Helvetica,sans-serif; color:black; background:White;} table,tr,td {font:10pt Arial,Helvetica,sans-serif; color:Black; background:#f7f7e7; padding:0px 0px 0px 0px; margin:0px 0px 0px 0px;} th {font:bold 10pt Arial,Helvetica,sans-serif; color:#336699; background:#cccc99; padding:0px 0px 0px 0px;} h1 {font:16pt Arial,Helvetica,Geneva,sans-serif; color:#336699; background-color:White; border-bottom:1px solid #cccc99; margin-top:0pt; margin-bottom:0pt; padding:0px 0px 0px 0px;} h2 {font:bold 10pt Arial,Helvetica,Geneva,sans-serif; color:#336699; background-color:White; margin-top:4pt; margin-bottom:0pt;} a {font:9pt Arial,Helvetica,sans-serif; color:#663300; background:#ffffff; margin-top:0pt; margin-bottom:0pt; vertical-align:top;}</style><title>SQL*Plus Report</title>
+</head>
+<body>
+SQL&gt; SELECT UPPER(e.last_name)||' '||e.first_name &quot;NOM Prénom&quot;,
+<br>
+  2   NVL(r.cr, 0) &quot;Nombre de réservations&quot;
+<br>
+  3  FROM t_employee e
+<br>
+  4  FULL OUTER JOIN (SELECT employee_id, COUNT(reservation_id) cr
+<br>
+  5    FROM t_reservation
+<br>
+  6    GROUP BY employee_id) r
+<br>
+  7  ON r.employee_id = e.employee_id
+<br>
+  8  START WITH e.manager_id = 1
+<br>
+  9  CONNECT BY PRIOR e.employee_id = e.manager_id ;
+<br>
+<p>
+<table border='1' width='90%' align='center' summary='Script output'>
+<tr>
+<th scope="col">
+NOM Prénom
+</th>
+<th scope="col">
+Nombre de réservations
+</th>
+</tr>
+<tr>
+<td>
+DESNOYER Jerome
+</td>
+<td align="right">
+         6
+</td>
+</tr>
+<tr>
+<td>
+ROY Thibault
+</td>
+<td align="right">
+         3
+</td>
+</tr>
+<tr>
+<td>
+COUDERT Reda
+</td>
+<td align="right">
+         3
+</td>
+</tr>
+<tr>
+<td>
+MOTHE Francois
+</td>
+<td align="right">
+         0
+</td>
+</tr>
+<tr>
+<td>
+MONRENCY Yoan
+</td>
+<td align="right">
+         3
+</td>
+</tr>
+<tr>
+<td>
+AYOT Davina
+</td>
+<td align="right">
+         5
+</td>
+</tr>
+<tr>
+<td>
+LANGLOIS Arnaud
+</td>
+<td align="right">
+         3
+</td>
+</tr>
+<tr>
+<td>
+POISSONNIER Maxime
+</td>
+<td align="right">
+         5
+</td>
+</tr>
+<tr>
+<td>
+CHALUT Pierre
+</td>
+<td align="right">
+         1
+</td>
+</tr>
+<tr>
+<td>
+SAUREL André
+</td>
+<td align="right">
+         5
+</td>
+</tr>
+<tr>
+<td>
+GOUSSE Kevin
+</td>
+<td align="right">
+         1
+</td>
+</tr>
+<tr>
+<td>
+PATENAUDE Etienne
+</td>
+<td align="right">
+         2
+</td>
+</tr>
+<tr>
+<td>
+FAUBERT Mathieu
+</td>
+<td align="right">
+         4
+</td>
+</tr>
+</table>
+<p>
+
+13 ligne(s) sélectionnée(s).<br>
+<br>
+
+
+SQL&gt; SPOOL OFF;
+<br>
+</body>
+</html>

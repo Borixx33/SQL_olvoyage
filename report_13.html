@@ -1,0 +1,70 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252">
+<meta name="generator" content="SQL*Plus 10.2.0">
+<style type='text/css'> body {font:10pt Arial,Helvetica,sans-serif; color:black; background:White;} p {font:10pt Arial,Helvetica,sans-serif; color:black; background:White;} table,tr,td {font:10pt Arial,Helvetica,sans-serif; color:Black; background:#f7f7e7; padding:0px 0px 0px 0px; margin:0px 0px 0px 0px;} th {font:bold 10pt Arial,Helvetica,sans-serif; color:#336699; background:#cccc99; padding:0px 0px 0px 0px;} h1 {font:16pt Arial,Helvetica,Geneva,sans-serif; color:#336699; background-color:White; border-bottom:1px solid #cccc99; margin-top:0pt; margin-bottom:0pt; padding:0px 0px 0px 0px;} h2 {font:bold 10pt Arial,Helvetica,Geneva,sans-serif; color:#336699; background-color:White; margin-top:4pt; margin-bottom:0pt;} a {font:9pt Arial,Helvetica,sans-serif; color:#663300; background:#ffffff; margin-top:0pt; margin-bottom:0pt; vertical-align:top;}</style><title>SQL*Plus Report</title>
+</head>
+<body>
+SQL&gt; SELECT t.ticket_id &quot;Numéro Billet&quot;, c.first_name || ' ' ||UPPER(c.last_name) &quot;Nom Client&quot;,
+<br>
+  2    s1.city||'('||TO_CHAR(tt.departure_time, 'DD/MM/YY HH24:MI')||')-'||s2.city||'('||TO_CHAR(tt.arrival_time, 'DD/MM/YY HH24:MI')||')' &quot;Nom Train&quot;
+<br>
+  3  FROM t_ticket t
+<br>
+  4  JOIN t_customer c ON t.customer_id = c.customer_id
+<br>
+  5  JOIN t_wagon_train wt ON t.wag_tr_id = wt.wag_tr_id
+<br>
+  6  JOIN t_train tt ON wt.train_id = tt.train_id
+<br>
+  7  JOIN t_station s1 ON tt.departure_station_id = s1.station_id
+<br>
+  8  JOIN t_station s2 ON tt.arrival_station_id = s2.station_id
+<br>
+  9  JOIN t_wagon w ON wt.wagon_id = w.wagon_id
+<br>
+ 10  JOIN t_reservation r ON t.reservation_id = r.reservation_id
+<br>
+ 11  WHERE w.class_type = 1
+<br>
+ 12  AND tt.departure_time BETWEEN '15/01/18' AND '25/01/18'
+<br>
+ 13  AND (tt.departure_time-r.creation_date) BETWEEN 0 AND 20
+<br>
+ 14  AND MONTHS_BETWEEN(c.birth_date,r.creation_date) &lt; 25*12
+<br>
+ 15  AND r.price IS NOT NULL
+<br>
+ 16  ORDER BY r.creation_date;
+<br>
+<p>
+<table border='1' width='90%' align='center' summary='Script output'>
+<tr>
+<th scope="col">
+Numéro Billet
+</th>
+<th scope="col">
+Nom Client
+</th>
+<th scope="col">
+Nom Train
+</th>
+</tr>
+<tr>
+<td align="right">
+        40
+</td>
+<td>
+Paul WARREN
+</td>
+<td>
+Paris(24/01/18 16:30)-Nice(24/01/18 20:05)
+</td>
+</tr>
+</table>
+<p>
+
+SQL&gt; SPOOL OFF;
+<br>
+</body>
+</html>
