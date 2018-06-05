@@ -1,0 +1,219 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1252">
+<meta name="generator" content="SQL*Plus 10.2.0">
+<style type='text/css'> body {font:10pt Arial,Helvetica,sans-serif; color:black; background:White;} p {font:10pt Arial,Helvetica,sans-serif; color:black; background:White;} table,tr,td {font:10pt Arial,Helvetica,sans-serif; color:Black; background:#f7f7e7; padding:0px 0px 0px 0px; margin:0px 0px 0px 0px;} th {font:bold 10pt Arial,Helvetica,sans-serif; color:#336699; background:#cccc99; padding:0px 0px 0px 0px;} h1 {font:16pt Arial,Helvetica,Geneva,sans-serif; color:#336699; background-color:White; border-bottom:1px solid #cccc99; margin-top:0pt; margin-bottom:0pt; padding:0px 0px 0px 0px;} h2 {font:bold 10pt Arial,Helvetica,Geneva,sans-serif; color:#336699; background-color:White; margin-top:4pt; margin-bottom:0pt;} a {font:9pt Arial,Helvetica,sans-serif; color:#663300; background:#ffffff; margin-top:0pt; margin-bottom:0pt; vertical-align:top;}</style><title>SQL*Plus Report</title>
+</head>
+<body>
+SQL&gt; SELECT DISTINCT (c.last_name ||' '|| c.first_name) &quot;Nom et Prénom&quot;
+<br>
+  2  FROM t_reservation r
+<br>
+  3  JOIN t_ticket t
+<br>
+  4  ON r.buyer_id != t.customer_id
+<br>
+  5  JOIN t_customer c
+<br>
+  6  ON r.buyer_id = c.customer_id
+<br>
+  7  ORDER BY &quot;Nom et Prénom&quot; ;
+<br>
+<p>
+<table border='1' width='90%' align='center' summary='Script output'>
+<tr>
+<th scope="col">
+Nom et Prénom
+</th>
+</tr>
+<tr>
+<td>
+Brooke Morgan
+</td>
+</tr>
+<tr>
+<td>
+Burton Albert
+</td>
+</tr>
+<tr>
+<td>
+Burton Whitney
+</td>
+</tr>
+<tr>
+<td>
+Cunningham Charles
+</td>
+</tr>
+<tr>
+<td>
+Dalton Vance
+</td>
+</tr>
+<tr>
+<td>
+Erickson Harvey
+</td>
+</tr>
+<tr>
+<td>
+Fleming Steve
+</td>
+</tr>
+<tr>
+<td>
+Fraser Thomas
+</td>
+</tr>
+<tr>
+<td>
+Harris Brandy
+</td>
+</tr>
+<tr>
+<td>
+Harris Joe
+</td>
+</tr>
+<tr>
+<td>
+Healy Stacy
+</td>
+</tr>
+<tr>
+<td>
+Herman Smith
+</td>
+</tr>
+<tr>
+<td>
+Herman Tom
+</td>
+</tr>
+<tr>
+<td>
+Hess Katherine
+</td>
+</tr>
+<tr>
+<th scope="col">
+Nom et Prénom
+</th>
+</tr>
+<tr>
+<td>
+Holmes Martin
+</td>
+</tr>
+<tr>
+<td>
+Jacobs Tarryn
+</td>
+</tr>
+<tr>
+<td>
+Landers Philip
+</td>
+</tr>
+<tr>
+<td>
+Landers Robert
+</td>
+</tr>
+<tr>
+<td>
+Lang Wayne
+</td>
+</tr>
+<tr>
+<td>
+Lyons Gordons
+</td>
+</tr>
+<tr>
+<td>
+Maugard Gregory
+</td>
+</tr>
+<tr>
+<td>
+McDaniels Wayne
+</td>
+</tr>
+<tr>
+<td>
+Michaels Timothy
+</td>
+</tr>
+<tr>
+<td>
+Miller Alex
+</td>
+</tr>
+<tr>
+<td>
+Morris Tim
+</td>
+</tr>
+<tr>
+<td>
+Nielsen Raph
+</td>
+</tr>
+<tr>
+<td>
+Novak Jessie
+</td>
+</tr>
+<tr>
+<td>
+Petersen David
+</td>
+</tr>
+<tr>
+<th scope="col">
+Nom et Prénom
+</th>
+</tr>
+<tr>
+<td>
+Quinn Rosemary
+</td>
+</tr>
+<tr>
+<td>
+Reynolds Samantha
+</td>
+</tr>
+<tr>
+<td>
+Rice Joe
+</td>
+</tr>
+<tr>
+<td>
+Ross Lou
+</td>
+</tr>
+<tr>
+<td>
+Tucker Gerard
+</td>
+</tr>
+<tr>
+<td>
+Warren Paul
+</td>
+</tr>
+</table>
+<p>
+
+34 ligne(s) sélectionnée(s).<br>
+<br>
+
+
+SQL&gt; SPOOL OFF;
+<br>
+</body>
+</html>
